@@ -11,7 +11,7 @@ local SendChatMessage = SendChatMessage
 local GetSpellLink = GetSpellLink
 
 local frame = CreateFrame("frame")
-local killstreak,db
+local killstreak
 
 
 function frame:Kill(unitName,spellID,damage)
@@ -35,7 +35,7 @@ function frame:Kill(unitName,spellID,damage)
 
     SendChatMessage(message,"EMOTE")
 
-    PlaySoundFile(SOUNDS_PATH..math.min(killstreak-1,14)..".ogg")
+    PlaySoundFile(SOUNDS_PATH..math.min(killstreak,14)..".ogg")
 end
 
 function frame:Reset()
