@@ -57,12 +57,7 @@ function frame:COMBAT_LOG_EVENT_UNFILTERED(_,subEvent,...)
     end
 end
 
-function frame:UNIT_DIED(unitID)
-    if unitID == "player" then
-        self:Reset()
-    end
-end
-
+frame.PLAYER_DEAD = frame.Reset
 frame.PLAYER_ENTERING_WORLD = frame.Reset
 
 
@@ -72,6 +67,6 @@ end
 
 
 frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-frame:RegisterEvent("UNIT_DIED")
+frame:RegisterEvent("PLAYER_DEAD")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")  
 frame:SetScript("OnEvent",frame.OnEvent)
