@@ -19,8 +19,8 @@ function frame:Kill(unitName,spellID,damage)
     killstreak = killstreak + 1
 
     local message = MESSAGE
-    message = message:gsub("$name",unitName or "??")
-    message = message:gsub("$damage",damage or "??")
+    message = message:gsub("$name",unitName)
+    message = message:gsub("$damage",damage)
     message = message:gsub("$streak",killstreak)
 
 
@@ -51,6 +51,7 @@ function frame:COMBAT_LOG_EVENT_UNFILTERED(_,subEvent,...)
             local spellID,_,_,damage,overkill = select(select("#",...)-11,...)
             if overkill and overkill > 0 then
                 if subEvent == "SWING_DAMAGE" then spellID = 6603 end
+                dstName = dstName:gsub("-.*$","")
                 self:Kill(dstName,spellID,damage)
             end
         end
